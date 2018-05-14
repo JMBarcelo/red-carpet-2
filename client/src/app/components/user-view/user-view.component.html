@@ -1,0 +1,73 @@
+<h1>RED CARPET</h1>
+
+<div class="container" *ngIf="userSessionService.user">
+  <div class="row">
+
+    <h2>Welcome {{userSessionService.user.username}}</h2>
+    <a [routerLink]="['/edit']" class="btn btn-primary">Edit profile</a>
+    <button (click)="logout()" type="submit" class="btn btn-primary btn-lg btn-block">Log Out</button>
+
+  </div>
+  <div class="row events">
+    <div *ngIf="userSessionService.user.events.length">
+      <div class="event" *ngFor="let event of events">
+        <a [routerLink]="['/event',event._id]">
+          <img [src]="event.image" width=100/>
+        </a>
+        <h3> {{ event.size }} </h3>
+        <p> {{ event.brand }} </p>
+      </div>
+    </div>
+    <div *ngIf="!userSessionService.user.events.length">
+      <p>YOU HAVE NO EVENTS PROGRAMED</p>
+      <a [routerLink]="['/events/new']" class="btn btn-primary">Program new Event</a>    
+    </div>
+  </div>
+  
+  <div class="row groups">
+    <div *ngIf="userSessionService.user.groups.length">
+      <div class="group" *ngFor="let group of groups">
+        <a [routerLink]="['/group',group._id]">
+          <h3> {{ group.name }} </h3>
+        </a>
+      </div>
+    </div>
+    <div *ngIf="!userSessionService.user.groups.length">
+      <p>YOU HAVE NO GROUPS CREATED</p>
+      <a [routerLink]="['/groups/new']" class="btn btn-primary">Create new Group</a>    
+    </div>
+  </div>
+
+  <div class="row favslists">
+    <div *ngIf="userSessionService.user.favslists.length">
+      <div class="favslist" *ngFor="let favslist of favslists">
+        <a [routerLink]="['/favslist',favslist._id]">
+          <h3> {{ favlist.title }} </h3>
+        </a>
+      </div>
+    </div>
+    <div *ngIf="!userSessionService.user.favslists.length">
+      <p>YOU HAVE NO FAVOURITES LISTS CREATED</p>
+      <a [routerLink]="['/favslists/new']" class="btn btn-primary">Create new Favourites List</a>    
+    </div>
+  </div>
+  
+  <div class="row clothes">
+    <div *ngIf="userSessionService.user.clothes.length">
+      <div class="garment" *ngFor="let garment of clothes">
+        <h3> {{ garment.size }} </h3>
+        <p> {{ garment.brand }} </p>
+      </div>
+    </div>
+    <div *ngIf="!userSessionService.user.clothes.length">
+      <p>YOU HAVE NO CLOTHES UPLOADED</p>
+      <a [routerLink]="['/garment']" class="btn btn-primary">Upload new Garment</a>    
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="!userSessionService.user">
+
+  <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+  <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a>
+
+</div>

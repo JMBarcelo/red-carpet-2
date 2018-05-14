@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row" *ngIf="!userSessionService.user">
+    <h2>You are not log in!</h2>
+    <button (click)="logout()" type="submit" class="btn btn-primary btn-lg btn-block">Log Out</button>
+  </div>
+
+  <div class="row" *ngIf="userSessionService.user">
+    <h2>Sign Up</h2>
+    <form>
+      <div class="form-group">
+        <label for="size">Size: </label>
+        <input type="text" [(ngModel)]="garmentInfo.size" class="form-control" placeholder="Size" name="size">
+      </div>
+      <div class="form-group">
+        <label for="brand">Brand: </label>
+        <input type="text" [(ngModel)]="garmentInfo.brand" class="form-control" placeholder="Brand" name="brand">
+      </div>
+      <div class="form-group">
+        <label for="kind">Kind: </label>
+        <input type="text" [(ngModel)]="garmentInfo.kind" class="form-control" placeholder="Kind" name="kind">
+      </div>
+      <button type="submit" (click)="newGarment()" class="btn btn-primary btn-lg btn-block">Upload Garment</button>
+    </form>
+  </div>
+
+  <a [routerLink]="['/home']" class="btn btn-primary">Back Home</a>
+</div>

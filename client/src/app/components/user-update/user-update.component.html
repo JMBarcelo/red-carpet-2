@@ -1,0 +1,42 @@
+<h1>RED CARPET</h1>
+
+<a [routerLink]="['/home']" class="btn btn-primary">Back Home</a>
+
+<div class="container" *ngIf="userSessionService.user">
+  <div class="row">
+
+    <h2>Welcome {{userSessionService.user.username}}</h2>
+
+  </div>
+  <div class="row">
+    <h3>Update your profile</h3>
+    <form>
+      <div class="form-group">
+        <label for="username">Username: </label>
+        <input type="text" [(ngModel)]="userSessionService.user.username" class="form-control" [placeholder]="userSessionService.user.username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="email">Email: </label>
+        <input type="email" [(ngModel)]="userSessionService.user.email" class="form-control" [placeholder]="userSessionService.user.email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="birthday">Birthday: </label>
+        <input type="date" [(ngModel)]="userSessionService.user.birthday" class="form-control" [value]="userSessionService.birthday | date: 'dd-MM-yyyy'" name="birthday">
+      </div>
+      <div class="form-group">
+        <label for="city">City: </label>
+        <input type="text" [(ngModel)]="userSessionService.user.city" class="form-control" [placeholder]="userSessionService.user.city" name="city">
+      </div>
+      <button type="submit" (click)="update()" class="btn btn-primary btn-lg btn-block">Update</button>
+    </form>
+
+    <button (click)="erase()" type="submit" class="btn btn-danger btn-lg btn-block">Delete Account</button>
+
+  </div>
+</div>
+<div class="container" *ngIf="!userSessionService.user">
+
+  <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+  <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a>
+
+</div>

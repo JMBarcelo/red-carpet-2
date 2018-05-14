@@ -6,7 +6,7 @@ const groupSchema = new Schema(
     name: String,
     /*_user*/
     users: {
-      type: Array,
+      type: [{type: Schema.Types.ObjectId, ref: 'User'}],
       default: [
         {
           'type': Schema.Types.ObjectId,
@@ -14,10 +14,7 @@ const groupSchema = new Schema(
         }
       ]
     },
-    clothes: {
-      type: Array,
-      default: []
-    }
+    clothes: [{type: Schema.Types.ObjectId, ref: 'Garment'}],
   },
   {
     timestamps: {

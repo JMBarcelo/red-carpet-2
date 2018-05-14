@@ -7,7 +7,7 @@ const simpleCrud = Model => {
 
   // RETRIVE ALL
   router.get("/", (req, res, next) => {
-    Model.find()
+    Model.find({'_user' : res.locals.user._id})
       .then(objects => res.json(objects))
       .catch(e => next(e));
   });
@@ -15,7 +15,10 @@ const simpleCrud = Model => {
   // CREATE
   router.post("/", (req, res, next) => {
     const obj = _.pick(req.body, fields);
-    Model.create(obj)
+    Model.create(obj, (err, objArr) => {
+      req.user.update({$push:{clothes:objArr._id}, obj:true}).then(() => 
+      res.status(200).json(objArr._id))
+    })
       .then(object => res.json(object))
       .catch(e => next(e));
   });
@@ -23,7 +26,7 @@ const simpleCrud = Model => {
   // RETRIVE
   router.get("/:id", (req, res, next) => {
     Model.findById(req.params.id)
-      .then(object => res.json(object))
+      .then(object =>res.json(object))
       .catch(e => next(e));
   });
 

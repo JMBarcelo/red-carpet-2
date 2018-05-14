@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserSessionService } from '../../services/user-session.service';
 import { Router } from '@angular/router';
+import { ClothesService } from '../../services/clothes.service';
 
 @Component({
   selector: 'app-user-view',
@@ -8,10 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-view.component.scss']
 })
 export class UserViewComponent implements OnInit {
+  user: any;
+  clothes: any;
 
-  constructor(public userSessionService: UserSessionService, public router: Router) { }
+  constructor(public userSessionService: UserSessionService, public clothesService: ClothesService ,public router: Router) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.userSessionService.isLoggedIn().subscribe( u => {
+      this.user = u
+      this.clothesService.getList().subscribe(list => this.clothes = list)
+    });
+    
+  }
 
   logout() {
     this.userSessionService.logout()

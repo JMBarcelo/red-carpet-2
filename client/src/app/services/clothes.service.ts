@@ -9,27 +9,27 @@ export class ClothesService {
   constructor(private http: Http) {}
 
   getList() {
-    return this.http.get(`${this.BASE_URL}/clothes`)
+    return this.http.get(`${this.BASE_URL}/api/clothes`, this.options)
       .map((res) => res.json());
   }
 
-  get(id) {
-    return this.http.get(`${this.BASE_URL}/clothes/${id}`)
+  get(garment) {
+    return this.http.get(`${this.BASE_URL}/api/clothes/${garment.id}`, this.options)
       .map((res) => res.json());
   }
 
   edit(garment) {
-    return this.http.put(`${this.BASE_URL}/clothes/${garment.id}`, garment)
+    return this.http.put(`${this.BASE_URL}/api/clothes/${garment.id}`, garment, this.options)
       .map((res) => res.json());
   }
 
   remove(id) {
-    return this.http.delete(`${this.BASE_URL}/clothes/${id}`)
+    return this.http.delete(`${this.BASE_URL}/api/clothes/${id}`, this.options)
       .map((res) => res.json());
   }
 
   newGarment(garment) {
-    return this.http.post(`${this.BASE_URL}/api/garment`, garment, this.options)
+    return this.http.post(`${this.BASE_URL}/api/clothes`, garment, this.options)
       .map((res) => res.json());
   }
 

@@ -8,10 +8,7 @@ const favslistSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-    clothes: {
-      type: Array,
-      default: []
-    },
+    clothes: [{type: Schema.Types.ObjectId, ref: 'Garment'}],
     color: String,
   },
   {

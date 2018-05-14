@@ -8,10 +8,7 @@ const meetingSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-    clothes: {
-      type: Array,
-      default: []
-    },
+    clothes: [{type: Schema.Types.ObjectId, ref: 'Garment'}],
     date: Date,
     place: String,
   },

@@ -3,12 +3,12 @@ const passport = require("passport");
 const crud = require("../../crud")
 const Garment = require("./garment.model")
 
-const {
+/*const {
   create,
   getGarment,
   update,
   erase
-} = require("./garment.controller");
+} = require("./garment.controller");*/
 
 const router = crud(Garment);
 

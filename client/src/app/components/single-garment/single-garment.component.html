@@ -1,0 +1,10 @@
+<h1> Garment details </h1>
+<a [routerLink]="['']"> Back to list </a>
+
+<div *ngIf="garment">
+  <div class="garment-info">
+    <h2> {{ garment.kind }}</h2>
+    <h3> {{ garment.brand }} </h3>
+    <p> {{ garment.size }} </p>    
+  </div>
+</div>

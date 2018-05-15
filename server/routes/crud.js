@@ -13,15 +13,15 @@ const simpleCrud = Model => {
   });
 
   // CREATE
-  router.post("/", (req, res, next) => {
-    const obj = _.pick(req.body, fields);
-    Model.create(obj, (err, objArr) => {
-      req.user.update({$push:{clothes:objArr._id}, obj:true}).then(() => 
-      res.status(200).json(objArr._id))
-    })
-      .then(object => res.json(object))
-      .catch(e => next(e));
-  });
+  // router.post("/", (req, res, next) => {
+  //   const obj = _.pick(req.body, fields);
+  //   Model.create(obj, (err, objArr) => {
+  //     req.user.update({$push:{clothes:objArr._id}, obj:true}).then(() => 
+  //     res.status(200).json(objArr._id))
+  //   })
+  //     .then(object => res.json(object))
+  //     .catch(e => next(e));
+  // });
 
   // RETRIVE
   router.get("/:id", (req, res, next) => {
@@ -33,18 +33,20 @@ const simpleCrud = Model => {
   // UPDATE
   router.put("/:id", (req, res, next) => {
     const updates = _.pick(req.body, fields);
-
     Model.findByIdAndUpdate(req.params.id, updates, { new: true })
       .then(object => res.json(object))
       .catch(e => next(e));
   });
 
   // DELETE
-  router.delete("/:id", (req, res, next) => {
-    Model.findByIdAndRemove(req.params.id)
-      .then(() => res.json({ message: `SUCESSFUL DELETE ${req.params.id}` }))
-      .catch(e => next(e));
-  });
+  // router.delete("/:id", (req, res, next) => {
+  //   Model.findByIdAndRemove(req.params.id, (err, objArr) => {
+  //     req.user.update({$pull:{clothes:objArr._id}, obj:true}).then(() => 
+  //     res.status(200).json(objArr._id))
+  //   })
+  //     .then(() => res.json({ message: `SUCESSFUL DELETE ${req.params.id}` }))
+  //     .catch(e => next(e));
+  // });
 
   return router;
 };

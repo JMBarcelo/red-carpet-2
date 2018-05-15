@@ -1,0 +1,27 @@
+<h1>Garment</h1>
+
+<a [routerLink]="['']"> Back to list </a>
+
+<div class="container" *ngIf="userSessionService.user">
+  <div class="row">
+    <h3>Update your {{clothesService.garment.brand}} {{clothesService.garment.kind}}</h3>
+    <form>
+      <div class="form-group">
+        <label for="kind">Kind: </label>
+        <input type="text" [(ngModel)]="clothesService.garment.kind" class="form-control" [placeholder]="clothesService.garment.kind" name="kind">
+      </div>
+      <div class="form-group">
+        <label for="brand">Brand: </label>
+        <input type="text" [(ngModel)]="clothesService.garment.brand" class="form-control" [placeholder]="clothesService.garment.brand" name="brand">
+      </div>
+      <div class="form-group">
+        <label for="size">Size: </label>
+        <input type="text" [(ngModel)]="clothesService.garment.size" class="form-control" [placeholder]="clothesService.garment.size" name="size">
+      </div>
+      <button type="submit" (click)="edit()" class="btn btn-primary btn-lg btn-block">Edit</button>
+    </form>
+
+    <button (click)="delete()" type="submit" class="btn btn-danger btn-lg btn-block">Delete Garment</button>
+
+  </div>
+</div>

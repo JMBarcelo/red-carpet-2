@@ -4,7 +4,7 @@
   <div class="row">
 
     <h2>Welcome {{userSessionService.user.username}}</h2>
-    <a [routerLink]="['/edit']" class="btn btn-primary">Edit profile</a>
+    <a [routerLink]="['/edituser']" class="btn btn-primary">Edit profile</a>
     <button (click)="logout()" type="submit" class="btn btn-primary btn-lg btn-block">Log Out</button>
 
   </div>
@@ -39,11 +39,11 @@
   </div>
 
   <div class="row favslists">
-    <a [routerLink]="['/favslists/new']" class="btn btn-primary">Create new Favourites List</a>
+    <a [routerLink]="['/addfavslist']" class="btn btn-primary">Create new Favourites List</a>
     <div *ngIf="userSessionService.user.favslists.length">
       <div class="favslist" *ngFor="let favslist of favslists">
-        <a [routerLink]="['/favslist',favslist._id]">
-          <h3> {{ favlist.title }} </h3>
+        <a  [routerLink]="['/favslist',favslist._id]">
+          <h3 [style.color]="favslist.color"> {{ favslist.title }} </h3>
         </a>
       </div>
     </div>
@@ -53,7 +53,7 @@
   </div>
 
   <div class="row clothes">
-    <a [routerLink]="['/addGarment']" class="btn btn-primary">Upload new Garment</a>
+    <a [routerLink]="['/addgarment']" class="btn btn-primary">Upload new Garment</a>
     <div *ngIf="userSessionService.user.clothes.length">
       <p>My Clothes</p>
       <div class="garment col-md-3" *ngFor="let garment of clothes">

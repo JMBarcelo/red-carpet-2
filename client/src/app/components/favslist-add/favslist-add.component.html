@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row" *ngIf="!userSessionService.user">
+    <h2>You are not log in!</h2>
+    <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+    <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a>
+  </div>
+
+  <div class="row" *ngIf="userSessionService.user">
+    <h2>Create Favslist</h2>
+    <form>
+      <div class="form-group">
+        <label for="title">Title: </label>
+        <input type="text" [(ngModel)]="favslistInfo.title" class="form-control" placeholder="Title" name="title">
+      </div>
+      <div class="form-group">
+        <label for="color">Color: </label>
+        <input type="color" [(ngModel)]="favslistInfo.color" class="form-control" placeholder="Color" name="color">
+      </div>
+      <button type="submit" (click)="newFavslist()" class="btn btn-primary btn-lg btn-block">Upload Favslist</button>
+    </form>
+  </div>
+
+  <a [routerLink]="['/home']" class="btn btn-primary">Back Home</a>
+</div>

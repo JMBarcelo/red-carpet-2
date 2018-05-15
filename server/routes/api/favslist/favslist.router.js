@@ -1,17 +1,17 @@
 const express = require("express");
 const passport = require("passport");
 const crud = require("../../crud")
-const Garment = require("./garment.model")
+const Favslist = require("./favslist.model")
 const _ = require("lodash");
-const fields = Object.keys(_.omit(Garment.schema.paths, ["__v", "_id"]));
+const fields = Object.keys(_.omit(Favslist.schema.paths, ["__v", "_id"]));
 
-const router = crud(Garment);
+const router = crud(Favslist);
 
 router.post("/", (req, res, next) => {
   const obj = _.pick(req.body, fields);
-  Garment.create(obj, (err, objArr) => {
+  Favslist.create(obj, (err, objArr) => {
     console.log(req.user)
-    req.user.update({$push:{clothes:objArr._id}, obj:true}).then(() => 
+    req.user.update({$push:{favslists:objArr._id}, obj:true}).then(() => 
     res.status(200).json(objArr._id))
   })
     .then(object => res.json(object))
@@ -19,8 +19,8 @@ router.post("/", (req, res, next) => {
 });
 
 router.delete("/:id", (req, res, next) => {
-  Garment.findByIdAndRemove(req.params.id, (err, objArr) => {
-    req.user.update({$pull:{clothes:objArr._id}, obj:true}).then(() => 
+  Favslist.findByIdAndRemove(req.params.id, (err, objArr) => {
+    req.user.update({$pull:{favslists:objArr._id}, obj:true}).then(() => 
     res.status(200).json(objArr._id))
   })
     .then(() => res.json({ message: `SUCESSFUL DELETE ${req.params.id}` }))

@@ -5,6 +5,7 @@
   <div class="garment-info">
     <h2> {{ garment.kind }}</h2>
     <h3> {{ garment.brand }} </h3>
-    <p> {{ garment.size }} </p>    
+    <p> {{ garment.size }} </p>
+    <a [routerLink]="['/editgarment', garment._id]" class="btn btn-primary">Edit garment</a>  
   </div>
 </div>

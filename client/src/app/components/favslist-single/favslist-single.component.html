@@ -1,0 +1,9 @@
+<h1> Favslist details </h1>
+<a [routerLink]="['']"> Back to list </a>
+
+<div *ngIf="favslist">
+  <div class="favslist-info">
+    <h2 [style.color]="favslist.color"> {{ favslist.title }}</h2>
+    <a [routerLink]="['/editfavslist', favslist._id]" class="btn btn-primary">Edit Favslist</a>  
+  </div>
+</div>

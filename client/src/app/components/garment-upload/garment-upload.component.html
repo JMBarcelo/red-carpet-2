@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row" *ngIf="!userSessionService.user">
     <h2>You are not log in!</h2>
-    <button (click)="logout()" type="submit" class="btn btn-primary btn-lg btn-block">Log Out</button>
+    <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+    <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a>
   </div>
 
   <div class="row" *ngIf="userSessionService.user">
-    <h2>Sign Up</h2>
+    <h2>Upload Garment</h2>
     <form>
       <div class="form-group">
         <label for="size">Size: </label>

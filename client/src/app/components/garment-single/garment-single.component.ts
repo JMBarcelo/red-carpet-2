@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClothesService } from '../../services/clothes.service';
 
 @Component({
-  selector: 'app-single-garment',
-  templateUrl: './single-garment.component.html',
-  styleUrls: ['./single-garment.component.scss']
+  selector: 'app-garment-single',
+  templateUrl: './garment-single.component.html',
+  styleUrls: ['./garment-single.component.scss']
 })
-export class SingleGarmentComponent implements OnInit {
+export class GarmentSingleComponent implements OnInit {
 
   garment: any;
 

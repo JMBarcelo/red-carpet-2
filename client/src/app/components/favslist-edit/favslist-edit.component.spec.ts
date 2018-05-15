@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UploadGarmentComponent } from './upload-garment.component';
+import { FavslistEditComponent } from './favslist-edit.component';
 
-describe('UploadGarmentComponent', () => {
-  let component: UploadGarmentComponent;
-  let fixture: ComponentFixture<UploadGarmentComponent>;
+describe('FavslistEditComponent', () => {
+  let component: FavslistEditComponent;
+  let fixture: ComponentFixture<FavslistEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadGarmentComponent ]
+      declarations: [ FavslistEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UploadGarmentComponent);
+    fixture = TestBed.createComponent(FavslistEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

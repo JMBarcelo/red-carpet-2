@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { ClothesService } from '../../services/clothes.service';
 
 @Component({
-  selector: 'app-upload-garment',
-  templateUrl: './upload-garment.component.html',
-  styleUrls: ['./upload-garment.component.scss']
+  selector: 'app-garment-upload',
+  templateUrl: './garment-upload.component.html',
+  styleUrls: ['./garment-upload.component.scss']
 })
-export class UploadGarmentComponent implements OnInit {
+export class GarmentUploadComponent implements OnInit {
 
   garmentInfo = {
     _user: this.userSessionService.user,
@@ -17,7 +17,11 @@ export class UploadGarmentComponent implements OnInit {
     kind: '',
   }
 
-  constructor(public userSessionService: UserSessionService, public clothesService: ClothesService ,public router: Router) {
+  constructor(
+    public userSessionService: UserSessionService,
+    public clothesService: ClothesService,
+    public router: Router
+  ) {
     
   }
 

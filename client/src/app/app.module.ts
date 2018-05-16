@@ -16,13 +16,21 @@ import { GarmentEditComponent } from './components/garment-edit/garment-edit.com
 
 import { UserSessionService } from './services/user-session.service';
 import { ClothesService } from './services/clothes.service';
-import { EventsService } from './services/events.service';
+
 import { FavslistsService } from './services/favslists.service';
 import { GroupsService } from './services/groups.service';
 import { NotificationsService } from './services/notifications.service';
 import { FavslistAddComponent } from './components/favslist-add/favslist-add.component';
 import { FavslistSingleComponent } from './components/favslist-single/favslist-single.component';
 import { FavslistEditComponent } from './components/favslist-edit/favslist-edit.component';
+import { GroupCreateComponent } from './components/group-create/group-create.component';
+import { GroupSingleComponent } from './components/group-single/group-single.component';
+import { GroupEditComponent } from './components/group-edit/group-edit.component';
+import { MeetingAddComponent } from './components/meeting-add/meeting-add.component';
+import { MeetingEditComponent } from './components/meeting-edit/meeting-edit.component';
+import { MeetingSingleComponent } from './components/meeting-single/meeting-single.component';
+import { MeetingsService } from './services/meetings.service';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +44,13 @@ import { FavslistEditComponent } from './components/favslist-edit/favslist-edit.
     GarmentEditComponent,
     FavslistAddComponent,
     FavslistSingleComponent,
-    FavslistEditComponent
+    FavslistEditComponent,
+    GroupCreateComponent,
+    GroupSingleComponent,
+    GroupEditComponent,
+    MeetingAddComponent,
+    MeetingEditComponent,
+    MeetingSingleComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +61,7 @@ import { FavslistEditComponent } from './components/favslist-edit/favslist-edit.
   providers: [
     UserSessionService,
     ClothesService,
-    EventsService,
+    MeetingsService,
     FavslistsService,
     GroupsService,
     NotificationsService

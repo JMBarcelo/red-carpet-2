@@ -1,0 +1,9 @@
+<h1> Group details </h1>
+<a [routerLink]="['']"> Back to list </a>
+
+<div *ngIf="group">
+  <div class="group-info">
+    <h2> {{ group.name }}</h2>
+    <a [routerLink]="['/editgroup', group._id]" class="btn btn-primary">Edit Group</a>  
+  </div>
+</div>

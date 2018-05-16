@@ -1,0 +1,20 @@
+<h1>Group</h1>
+
+<a [routerLink]="['']"> Back to list </a>
+
+<div class="container" *ngIf="userSessionService.user">
+  <div class="row">
+    <h3>Update Group</h3>
+    <form>
+      <div class="form-group">
+        <label for="name">Name: </label>
+        <input type="text" [(ngModel)]="groupsService.group.name" class="form-control" [placeholder]="groupsService.group.name"
+          name="name">
+      </div>
+      <button type="submit" (click)="edit()" class="btn btn-primary btn-lg btn-block">Edit</button>
+    </form>
+
+    <button (click)="delete()" type="submit" class="btn btn-danger btn-lg btn-block">Delete Group</button>
+
+  </div>
+</div>

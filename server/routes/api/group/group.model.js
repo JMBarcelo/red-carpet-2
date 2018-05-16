@@ -4,16 +4,7 @@ const Schema = mongoose.Schema;
 const groupSchema = new Schema(
   {
     name: String,
-    /*_user*/
-    users: {
-      type: [{type: Schema.Types.ObjectId, ref: 'User'}],
-      default: [
-        {
-          'type': Schema.Types.ObjectId,
-          'ref': "User"
-        }
-      ]
-    },
+    users: [{type: Schema.Types.ObjectId, ref: 'User'}],
     clothes: [{type: Schema.Types.ObjectId, ref: 'Garment'}],
   },
   {

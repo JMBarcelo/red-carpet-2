@@ -9,6 +9,12 @@ import { GarmentEditComponent } from './components/garment-edit/garment-edit.com
 import { FavslistAddComponent } from './components/favslist-add/favslist-add.component';
 import { FavslistSingleComponent } from './components/favslist-single/favslist-single.component';
 import { FavslistEditComponent } from './components/favslist-edit/favslist-edit.component';
+import { GroupCreateComponent } from './components/group-create/group-create.component';
+import { GroupEditComponent } from './components/group-edit/group-edit.component';
+import { GroupSingleComponent } from './components/group-single/group-single.component';
+import { MeetingAddComponent } from './components/meeting-add/meeting-add.component';
+import { MeetingSingleComponent } from './components/meeting-single/meeting-single.component';
+import { MeetingEditComponent } from './components/meeting-edit/meeting-edit.component';
 
 export const routes: Routes = [
    { path: '', component: UserViewComponent},
@@ -22,8 +28,11 @@ export const routes: Routes = [
    { path: 'addfavslist', component: FavslistAddComponent},
    { path: 'favslist/:id', component: FavslistSingleComponent},
    { path: 'editfavslist/:id', component: FavslistEditComponent},     
-   //{ path: 'group', component: },
-   //{ path: 'event', component: },
-   //{ path: 'favlist', component: },
+   { path: 'addgroup', component: GroupCreateComponent},
+   { path: 'group/:id', component: GroupSingleComponent},
+   { path: 'editgroup/:id', component: GroupEditComponent}, 
+   { path: 'addmeeting', component: MeetingAddComponent},
+   { path: 'meeting/:id', component: MeetingSingleComponent},
+   { path: 'editmeeting/:id', component: MeetingEditComponent}, 
    { path: '**', redirectTo: ''}
 ];

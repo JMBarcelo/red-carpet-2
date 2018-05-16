@@ -7,6 +7,12 @@ const fields = Object.keys(_.omit(Favslist.schema.paths, ["__v", "_id"]));
 
 const router = crud(Favslist);
 
+router.get("/", (req, res, next) => {
+  Favslist.find({'_user' : res.locals.user._id})
+    .then(objects => res.json(objects))
+    .catch(e => next(e));
+});
+
 router.post("/", (req, res, next) => {
   const obj = _.pick(req.body, fields);
   Favslist.create(obj, (err, objArr) => {
@@ -20,8 +26,7 @@ router.post("/", (req, res, next) => {
 
 router.delete("/:id", (req, res, next) => {
   Favslist.findByIdAndRemove(req.params.id, (err, objArr) => {
-    req.user.update({$pull:{favslists:objArr._id}, obj:true}).then(() => 
-    res.status(200).json(objArr._id))
+    req.user.update({$pull:{favslists:objArr._id}, obj:true})
   })
     .then(() => res.json({ message: `SUCESSFUL DELETE ${req.params.id}` }))
     .catch(e => next(e));

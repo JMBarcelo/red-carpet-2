@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { ClothesService } from '../../services/clothes.service';
 import { GroupsService } from '../../services/groups.service';
 import { FavslistsService } from '../../services/favslists.service';
-import { EventsService } from '../../services/events.service';
 import { NotificationsService } from '../../services/notifications.service';
+import { MeetingsService } from '../../services/meetings.service';
 
 @Component({
   selector: 'app-user-view',
@@ -17,7 +17,7 @@ export class UserViewComponent implements OnInit {
   clothes: any;
   groups: any;
   favslists: any;
-  events: any;
+  meetings: any;
   notifications: any;
 
   constructor(
@@ -26,7 +26,7 @@ export class UserViewComponent implements OnInit {
     public router: Router,
     public groupsService: GroupsService,
     public favsListsService: FavslistsService,
-    public eventsService: EventsService,
+    public meetingsService: MeetingsService,
     public notificationsService: NotificationsService
   ) {}
 
@@ -36,7 +36,7 @@ export class UserViewComponent implements OnInit {
       this.clothesService.getList().subscribe(list => this.clothes = list)
       this.groupsService.getList().subscribe(list => this.groups = list)
       this.favsListsService.getList().subscribe(list => this.favslists = list)
-      this.eventsService.getList().subscribe(list => this.events = list)
+      this.meetingsService.getList().subscribe(list => this.meetings = list)
       this.notificationsService.getList().subscribe(list => this.notifications = list)
     });
     

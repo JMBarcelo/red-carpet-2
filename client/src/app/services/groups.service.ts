@@ -1,36 +1,53 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class GroupsService {
 
+  group: any;
   BASE_URL: string = 'http://localhost:3000';
   options: any = { withCredentials: true };
   constructor(private http: Http) {}
 
+  handleGroup(group?: object) {
+    this.group = group;
+    return this.group;
+  }
+
   getList() {
-    return this.http.get(`${this.BASE_URL}/api/clothes`, this.options)
-      .map((res) => res.json());
+    return this.http.get(`${this.BASE_URL}/api/groups`, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
   }
 
-  get(groups) {
-    return this.http.get(`${this.BASE_URL}/api/clothes/${groups.id}`, this.options)
-      .map((res) => res.json());
+  get(group) {
+    return this.http.get(`${this.BASE_URL}/api/groups/${group.id}`, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
   }
 
-  edit(groups) {
-    return this.http.put(`${this.BASE_URL}/api/clothes/${groups.id}`, groups, this.options)
-      .map((res) => res.json());
+  edit(group) {
+    return this.http.put(`${this.BASE_URL}/api/groups/${group._id}`, group, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
   }
 
-  remove(id) {
-    return this.http.delete(`${this.BASE_URL}/api/clothes/${id}`, this.options)
-      .map((res) => res.json());
+  remove(group) {
+    return this.http.delete(`${this.BASE_URL}/api/groups/${group._id}`, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
   }
 
-  newGroups(groups) {
-    return this.http.post(`${this.BASE_URL}/api/clothes`, groups, this.options)
-      .map((res) => res.json());
+  newGroup(group) {
+    return this.http.post(`${this.BASE_URL}/api/groups`, group, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
   }
 
 }

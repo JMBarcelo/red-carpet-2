@@ -1,0 +1,11 @@
+<h1> Event details </h1>
+<a [routerLink]="['']"> Back to list </a>
+
+<div *ngIf="meeting">
+  <div class="meeting-info">
+    <h2> {{ meeting.name }}</h2>
+    <h3> {{ meeting.place }}</h3>
+    <p> {{ meeting.date }}</p>
+    <a [routerLink]="['/editmeeting', meeting._id]" class="btn btn-primary">Edit Event</a>  
+  </div>
+</div>

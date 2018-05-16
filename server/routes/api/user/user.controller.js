@@ -30,21 +30,19 @@ const getThisUser = (req, res, next) => {
   }
 };
 
-// View other user's profile
-const getUser = (req, res, next) => {
-  User.findById(req.params.id)
-    .select("-password")
-    .then(user => {
-      res.status(200).json({
-        user
-      });
-    })
-    .catch(err => {
-      debug(err);
-      res.status(400).json({
-        message: "Error retrieving user"
-      });
-    });
+const getUsers = (req, res, next) => {
+  User.find({ _id: {$ne:req.user._id} } )
+    .select('-password')
+    .select('-email')
+    .select('-_id')
+    .select('-updated_at')
+    .select('-created_at')
+    .select('-birthday')
+    .select('-__v')
+    .select('-isAdmin')
+    .select('-city')    
+    .then(objects => res.json(objects))
+    .catch(e => next(e));
 };
 
 const update = (req, res, next) => {
@@ -124,7 +122,7 @@ const erase = (req, res, next) => {
 
 module.exports = {
   getThisUser,
-  getUser,
+  getUsers,
   update,
   erase
 }

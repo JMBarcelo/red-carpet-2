@@ -1,0 +1,30 @@
+<a [routerLink]="['']"> Back to list </a>
+
+<h1>RED CARPET</h1>
+
+<div class="container" *ngIf="userSessionService.user">
+
+  <div class="row groups">
+    <div *ngIf="groups.length">
+      <div class="group" *ngFor="let group of groups">
+        <h3> {{ group.name }} </h3>
+        <button (click)="garmentGroup(group._id)" class="btn btn-danger btn-lg btn-block">Add Garment</button>
+        <!-- <form>
+          <label for="check"><h3> {{ group.name }} </h3></label>
+          <input type="checkbox" checklist-model="group.garment" checklist-value="garment.id" name="check">
+        </form>
+        <button (click)="garmentGroup()" type="submit" class="btn btn-danger btn-lg btn-block">Add/Remove Garment</button> -->
+      </div>
+    </div>
+    <div *ngIf="!groups.length">
+      <p>YOU HAVE NO GROUPS CREATED</p>
+    </div>
+  </div>
+
+</div>
+<div class="container" *ngIf="!userSessionService.user">
+
+  <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+  <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a>
+
+</div>

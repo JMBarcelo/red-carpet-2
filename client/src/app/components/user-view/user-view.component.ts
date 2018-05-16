@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ClothesService } from '../../services/clothes.service';
 import { GroupsService } from '../../services/groups.service';
 import { FavslistsService } from '../../services/favslists.service';
-import { NotificationsService } from '../../services/notifications.service';
 import { MeetingsService } from '../../services/meetings.service';
 
 @Component({
@@ -13,12 +12,12 @@ import { MeetingsService } from '../../services/meetings.service';
   styleUrls: ['./user-view.component.scss']
 })
 export class UserViewComponent implements OnInit {
+  
   user: any;
   clothes: any;
   groups: any;
   favslists: any;
   meetings: any;
-  notifications: any;
 
   constructor(
     public userSessionService: UserSessionService,
@@ -27,7 +26,6 @@ export class UserViewComponent implements OnInit {
     public groupsService: GroupsService,
     public favsListsService: FavslistsService,
     public meetingsService: MeetingsService,
-    public notificationsService: NotificationsService
   ) {}
 
   ngOnInit() {
@@ -37,9 +35,7 @@ export class UserViewComponent implements OnInit {
       this.groupsService.getList().subscribe(list => this.groups = list)
       this.favsListsService.getList().subscribe(list => this.favslists = list)
       this.meetingsService.getList().subscribe(list => this.meetings = list)
-      this.notificationsService.getList().subscribe(list => this.notifications = list)
     });
-    
   }
 
   logout() {

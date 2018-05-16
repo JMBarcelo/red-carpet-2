@@ -10,20 +10,17 @@ const {
 } = require("./user.auth");
 
 const {
-//   getThisUser,
-//   getUser,
+  getUsers,
   update,
   erase
 } = require("./user.controller");
-
-// router.get("/single/:id", getUser);
-// router.get("/", getThisUser);
 
 router.get("/session", loggedIn);
 router.get("/logout", logout);
 router.put("/update/:id", update);
 router.post("/login", login);
 router.post("/signup", signup);
+router.get("/", getUsers);
 router.delete("/", erase);
 
 module.exports = router;

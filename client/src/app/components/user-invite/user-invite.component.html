@@ -1,0 +1,7 @@
+<h1>Users</h1>
+<a [routerLink]="['/home']" class="btn btn-primary">Back Home</a>
+
+<div class="users" *ngFor="let user of users">
+    <h3> {{ user.username }} </h3>
+    <button (click)="addUser(user._id)" class="btn btn-danger btn-lg btn-block">Add to Group</button>
+</div>

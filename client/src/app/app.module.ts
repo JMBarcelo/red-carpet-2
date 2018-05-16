@@ -19,7 +19,6 @@ import { ClothesService } from './services/clothes.service';
 
 import { FavslistsService } from './services/favslists.service';
 import { GroupsService } from './services/groups.service';
-import { NotificationsService } from './services/notifications.service';
 import { FavslistAddComponent } from './components/favslist-add/favslist-add.component';
 import { FavslistSingleComponent } from './components/favslist-single/favslist-single.component';
 import { FavslistEditComponent } from './components/favslist-edit/favslist-edit.component';
@@ -30,6 +29,8 @@ import { MeetingAddComponent } from './components/meeting-add/meeting-add.compon
 import { MeetingEditComponent } from './components/meeting-edit/meeting-edit.component';
 import { MeetingSingleComponent } from './components/meeting-single/meeting-single.component';
 import { MeetingsService } from './services/meetings.service';
+import { GarmentGroupComponent } from './components/garment-group/garment-group.component';
+import { UserInviteComponent } from './components/user-invite/user-invite.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { MeetingsService } from './services/meetings.service';
     GarmentUploadComponent,
     GarmentSingleComponent,
     GarmentEditComponent,
+    GarmentGroupComponent,
     FavslistAddComponent,
     FavslistSingleComponent,
     FavslistEditComponent,
@@ -50,7 +52,8 @@ import { MeetingsService } from './services/meetings.service';
     GroupEditComponent,
     MeetingAddComponent,
     MeetingEditComponent,
-    MeetingSingleComponent
+    MeetingSingleComponent,
+    UserInviteComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,6 @@ import { MeetingsService } from './services/meetings.service';
     MeetingsService,
     FavslistsService,
     GroupsService,
-    NotificationsService
   ],
   bootstrap: [AppComponent]
 })

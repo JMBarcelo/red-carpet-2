@@ -50,4 +50,8 @@ export class ClothesService {
       .catch(error => Observable.throw(error.json().message));
   }
 
+  addGarmentGroup() {
+    
+  }
+
 }

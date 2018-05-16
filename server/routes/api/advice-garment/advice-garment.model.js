@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const notificationSchema = new Schema(
+const adviceGarmentSchema = new Schema(
   {
     _sender: {
       type: Schema.Types.ObjectId,
@@ -11,8 +11,14 @@ const notificationSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User"
     },
-    message: String,
-    /*_group, accept/reject, garment, days_after, days_before*/
+    _garment: {
+      type: Schema.Types.ObjectId,
+      ref: "Garment"
+    },
+    daymeeting: Date,
+    daysbefore: Number,
+    daysafter: Number,
+    message: String
   },
   {
     timestamps: {
@@ -22,5 +28,5 @@ const notificationSchema = new Schema(
   }
 );
 
-const Notification = mongoose.model("Notification", notificationSchema);
-module.exports = Notification;
+const AdviceGarment = mongoose.model("AdviceGarment", adviceGarmentSchema);
+module.exports = AdviceGarment;

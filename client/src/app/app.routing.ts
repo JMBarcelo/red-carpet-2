@@ -15,6 +15,8 @@ import { GroupSingleComponent } from './components/group-single/group-single.com
 import { MeetingAddComponent } from './components/meeting-add/meeting-add.component';
 import { MeetingSingleComponent } from './components/meeting-single/meeting-single.component';
 import { MeetingEditComponent } from './components/meeting-edit/meeting-edit.component';
+import { GarmentGroupComponent } from './components/garment-group/garment-group.component';
+import { UserInviteComponent } from './components/user-invite/user-invite.component';
 
 export const routes: Routes = [
    { path: '', component: UserViewComponent},
@@ -25,6 +27,7 @@ export const routes: Routes = [
    { path: 'addgarment', component: GarmentUploadComponent},
    { path: 'garment/:id', component: GarmentSingleComponent},
    { path: 'editgarment/:id', component: GarmentEditComponent},
+   { path: 'garmentgroup/:id', component: GarmentGroupComponent},
    { path: 'addfavslist', component: FavslistAddComponent},
    { path: 'favslist/:id', component: FavslistSingleComponent},
    { path: 'editfavslist/:id', component: FavslistEditComponent},     
@@ -34,5 +37,6 @@ export const routes: Routes = [
    { path: 'addmeeting', component: MeetingAddComponent},
    { path: 'meeting/:id', component: MeetingSingleComponent},
    { path: 'editmeeting/:id', component: MeetingEditComponent}, 
+   { path: 'inviteusers/:id', component: UserInviteComponent}, 
    { path: '**', redirectTo: ''}
 ];

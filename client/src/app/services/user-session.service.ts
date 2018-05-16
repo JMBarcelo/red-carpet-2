@@ -19,6 +19,14 @@ export class UserSessionService {
     return this.user;
   }
 
+  getUsers() {
+    return this.http
+      .get(`http://localhost:3000/api/user`, this.options)
+      .map(res => res.json())
+      .map(user => this.handleUser(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
   getThisUser(user) {
     return this.http
       .post(`http://localhost:3000/api/user/session`, user, this.options)

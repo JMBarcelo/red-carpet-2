@@ -10,52 +10,51 @@
   </div>
   <div class="row meetings">
     <a [routerLink]="['/addmeeting']" class="btn btn-primary">Program new Event</a>
-    <div *ngIf="userSessionService.user.meetings.length">
+    <div *ngIf="meetings.length">
       <div class="meeting" *ngFor="let meeting of meetings">
         <a [routerLink]="['/meeting',meeting._id]">
           <h3> {{ meeting.name }} </h3>
         </a>
-        <p> {{ meeting.date }} </p>
+        <p> {{ meeting.date | date:'dd-MM-yyyy'}} </p>
         <p> {{ meeting.place }} </p>
       </div>
     </div>
-    <div *ngIf="!userSessionService.user.meetings.length">
+    <div *ngIf="!meetings.length">
       <p>YOU HAVE NO EVENTS PROGRAMED</p>
     </div>
   </div>
 
   <div class="row groups">
     <a [routerLink]="['/addgroup']" class="btn btn-primary">Create new Group</a>
-    <div *ngIf="userSessionService.user.groups.length">
+    <div *ngIf="groups.length">
       <div class="group" *ngFor="let group of groups">
         <a [routerLink]="['/group',group._id]">
           <h3> {{ group.name }} </h3>
         </a>
       </div>
     </div>
-    <div *ngIf="!userSessionService.user.groups.length">
+    <div *ngIf="!groups.length">
       <p>YOU HAVE NO GROUPS CREATED</p>
     </div>
   </div>
 
   <div class="row favslists">
     <a [routerLink]="['/addfavslist']" class="btn btn-primary">Create new Favourites List</a>
-    <div *ngIf="userSessionService.user.favslists.length">
+    <div *ngIf="favslists.length">
       <div class="favslist" *ngFor="let favslist of favslists">
         <a  [routerLink]="['/favslist',favslist._id]">
           <h3 [style.color]="favslist.color"> {{ favslist.title }} </h3>
         </a>
       </div>
     </div>
-    <div *ngIf="!userSessionService.user.favslists.length">
+    <div *ngIf="!favslists.length">
       <p>YOU HAVE NO FAVOURITES LISTS CREATED</p>
     </div>
   </div>
 
   <div class="row clothes">
     <a [routerLink]="['/addgarment']" class="btn btn-primary">Upload new Garment</a>
-    <div *ngIf="userSessionService.user.clothes.length">
-      <p>My Clothes</p>
+    <div *ngIf="clothes.length">
       <div class="garment col-md-3" *ngFor="let garment of clothes">
         <a [routerLink]="['/garment', garment._id]">
           <h3> {{ garment.kind }} </h3>
@@ -64,7 +63,7 @@
         <p> {{ garment.size }} </p>
       </div>
     </div>
-    <div *ngIf="!userSessionService.user.clothes.length">
+    <div *ngIf="!clothes.length">
       <p>YOU HAVE NO CLOTHES UPLOADED</p>
     </div>
   </div>

@@ -5,6 +5,7 @@ const debug = require("debug")(`server:${path.basename(__dirname)}:express`);
 
 // Routes
 router.get("/", (req, res, next) => {
+  console.log("AQUI SI")
   res.render("index");
 });
 

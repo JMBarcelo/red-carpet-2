@@ -22,6 +22,13 @@ export class GroupsService {
       .catch(error => Observable.throw(error.json().message));
   }
 
+  getGarment() {
+    return this.http.get(`${this.BASE_URL}/api/groups/getgroups`, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
   get(group) {
     return this.http.get(`${this.BASE_URL}/api/groups/${group.id}`, this.options)
       .map((res) => res.json())
@@ -45,6 +52,13 @@ export class GroupsService {
 
   newGroup(group) {
     return this.http.post(`${this.BASE_URL}/api/groups`, group, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
+  garmentGroup(groupID, garmentID) {
+    return this.http.put(`${this.BASE_URL}/api/groups/garmentgroup/${groupID}`, {garment: garmentID}, this.options)
       .map((res) => res.json())
       .map(user => this.handleGroup(user))
       .catch(error => Observable.throw(error.json().message));

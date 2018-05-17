@@ -1,0 +1,23 @@
+<a [routerLink]="['']"> Back to list </a>
+
+<div class="container" *ngIf="userSessionService.user">
+
+  <div class="row favslists" *ngIf="favslists">
+    <div *ngIf="favslists.length">
+      <div class="favslist" *ngFor="let favslist of favslists">
+        <h3> {{ favslist.title }} </h3>
+        <button (click)="garmentFavslist(favslist._id)" class="btn btn-danger btn-lg btn-block">Add Garment</button>
+      </div>
+    </div>
+    <div *ngIf="!favslists.length">
+      <p>YOU HAVE NO FAVSLISTS CREATED</p>
+    </div>
+  </div>
+
+</div>
+<div class="container" *ngIf="!userSessionService.user">
+
+  <a [routerLink]="['/login']" class="btn btn-primary">Login</a>
+  <a [routerLink]="['/signup']" class="btn btn-primary">Signup</a>
+
+</div>

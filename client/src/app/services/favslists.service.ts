@@ -22,6 +22,13 @@ export class FavslistsService {
       .catch(error => Observable.throw(error.json().message));
   }
 
+  getGarment(favslist) {
+    return this.http.get(`${this.BASE_URL}/api/favslists/garment/${favslist._id}`, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleFavslist(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
   get(favslist) {
     return this.http.get(`${this.BASE_URL}/api/favslists/${favslist.id}`, this.options)
       .map((res) => res.json())
@@ -45,6 +52,20 @@ export class FavslistsService {
 
   newFavslist(favslist) {
     return this.http.post(`${this.BASE_URL}/api/favslists`, favslist, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleFavslist(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
+  garmentFavslist(favslistID, garmentID) {
+    return this.http.put(`${this.BASE_URL}/api/favslists/tofavslist/${favslistID}`, {garment: garmentID}, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleFavslist(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
+  outFavslist(favslistID, garmentID) {
+    return this.http.put(`${this.BASE_URL}/api/favslists/outfavslist/${favslistID}`, {garment: garmentID}, this.options)
       .map((res) => res.json())
       .map(user => this.handleFavslist(user))
       .catch(error => Observable.throw(error.json().message));

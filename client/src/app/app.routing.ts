@@ -17,6 +17,7 @@ import { MeetingSingleComponent } from './components/meeting-single/meeting-sing
 import { MeetingEditComponent } from './components/meeting-edit/meeting-edit.component';
 import { GarmentGroupComponent } from './components/garment-group/garment-group.component';
 import { UserInviteComponent } from './components/user-invite/user-invite.component';
+import { GarmentFavslistComponent } from './components/garment-favslist/garment-favslist.component';
 
 export const routes: Routes = [
    { path: '', component: UserViewComponent},
@@ -27,7 +28,8 @@ export const routes: Routes = [
    { path: 'addgarment', component: GarmentUploadComponent},
    { path: 'garment/:id', component: GarmentSingleComponent},
    { path: 'editgarment/:id', component: GarmentEditComponent},
-   { path: 'garmentgroup/:id', component: GarmentGroupComponent},
+   { path: 'togroup/:id', component: GarmentGroupComponent},
+   { path: 'tofavslist/:id', component: GarmentFavslistComponent}, 
    { path: 'addfavslist', component: FavslistAddComponent},
    { path: 'favslist/:id', component: FavslistSingleComponent},
    { path: 'editfavslist/:id', component: FavslistEditComponent},     

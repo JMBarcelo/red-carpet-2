@@ -4,6 +4,13 @@
 <div *ngIf="favslist">
   <div class="favslist-info">
     <h2 [style.color]="favslist.color"> {{ favslist.title }}</h2>
-    <a [routerLink]="['/editfavslist', favslist._id]" class="btn btn-primary">Edit Favslist</a>  
+    <div class="garment col-md-3" *ngFor="let garment of clothes">
+      <h3> {{ garment.kind }} </h3>
+      <p> {{ garment.brand }} </p>
+      <p> {{ garment.size }} </p>
+      <p> {{ garment.description }} </p>
+      <button (click)="outFavslist(garment)" class="btn btn-danger btn-lg">Remove from Favslist</button>
+    </div>
+    <a [routerLink]="['/editfavslist', favslist._id]" class="btn btn-primary">Edit Favslist</a>
   </div>
 </div>

@@ -5,7 +5,7 @@
 
     <h2>Welcome {{userSessionService.user.username}}</h2>
     <a [routerLink]="['/edituser']" class="btn btn-primary">Edit profile</a>
-    <button (click)="logout()" type="submit" class="btn btn-primary btn-lg btn-block">Log Out</button>
+    <button (click)="logout()" type="submit" class="btn btn-primary btn-lg">Log Out</button>
 
   </div>
   <div *ngIf="advicegroups && meetings && groups && favslists && clothes">
@@ -62,6 +62,9 @@
           <a [routerLink]="['/group',group._id]">
             <h3> {{ group.name }} </h3>
           </a>
+          <div class="members" *ngFor="let member of group.users">
+            <p> {{ member.username }} </p>
+          </div>
         </div>
       </div>
       <div *ngIf="!groups.length">
@@ -76,6 +79,11 @@
           <a [routerLink]="['/favslist',favslist._id]">
             <h3 [style.color]="favslist.color"> {{ favslist.title }} </h3>
           </a>
+          <div class="members" *ngFor="let garment of favslist.clothes">
+            <p> {{ garment.brand }} </p>
+            <p> {{ garment.kind }} </p>
+            <p> {{ garment.size }} </p>
+          </div>
         </div>
       </div>
       <div *ngIf="!favslists.length">

@@ -5,6 +5,27 @@
   <a [routerLink]="['/inviteusers', group._id]"> Invite other users </a>
   <div class="group-info">
     <h2> {{ group.name }}</h2>
-    <a [routerLink]="['/editgroup', group._id]" class="btn btn-primary">Edit Group</a>  
+
+    <div class="members" *ngFor="let member of group.users">
+      <p> {{ member.username }} </p>
+    </div>
+
+    <div class="row clothes" *ngIf="clothes">
+      <div *ngIf="clothes.length">
+        <div class="garment col-md-3" *ngFor="let garment of clothes">
+          <h3> {{ garment.kind }} </h3>
+          <p> {{ garment.brand }} </p>
+          <p> {{ garment.size }} </p>
+          <p> {{ garment.description }} </p>
+          <a [routerLink]="['/tofavslist', garment._id]" class="btn btn-primary">Add to Favslist</a>
+          <h1> Botón quitar de grupo si owner </h1>
+        </div>
+      </div>
+      <div *ngIf="!clothes.length">
+        <p>THIS GROUP IS EMPTY</p>
+      </div>
+    </div>
+
+    <a [routerLink]="['/editgroup', group._id]" class="btn btn-primary">Edit Group</a>
   </div>
 </div>

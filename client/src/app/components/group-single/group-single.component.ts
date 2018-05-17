@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GroupsService } from '../../services/groups.service';
+import { ClothesService } from '../../services/clothes.service';
+import { FavslistsService } from '../../services/favslists.service';
 
 @Component({
   selector: 'app-group-single',
@@ -10,6 +12,7 @@ import { GroupsService } from '../../services/groups.service';
 export class GroupSingleComponent implements OnInit {
 
   group: any;
+  clothes: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,16 +22,11 @@ export class GroupSingleComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe( params => {
-      this.groupsService.get(params)
-      .subscribe( group => this.group = group );
+      this.groupsService.getGarment(params)
+      .subscribe( group => {
+        this.group = group;
+        this.clothes = this.group.clothes
+      });
     })
   }
-
-  deleteFavslist() {
-    console.log("DELETED FAVSLIST");
-    this.groupsService.remove(this.group._id).subscribe(() => {
-      this.router.navigate(["/"]);
-    });
-  }
-
 }

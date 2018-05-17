@@ -32,6 +32,7 @@ import { MeetingsService } from './services/meetings.service';
 import { GarmentGroupComponent } from './components/garment-group/garment-group.component';
 import { UserInviteComponent } from './components/user-invite/user-invite.component';
 import { AdviceGroupService } from './services/advice-group.service';
+import { GarmentFavslistComponent } from './components/garment-favslist/garment-favslist.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { AdviceGroupService } from './services/advice-group.service';
     MeetingAddComponent,
     MeetingEditComponent,
     MeetingSingleComponent,
-    UserInviteComponent
+    UserInviteComponent,
+    GarmentFavslistComponent
   ],
   imports: [
     BrowserModule,

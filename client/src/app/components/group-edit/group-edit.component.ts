@@ -31,9 +31,11 @@ export class GroupEditComponent implements OnInit {
     .subscribe(() => this.router.navigate(['/']));
   }
 
-  delete() {
-    this.groupsService.remove(this.groupsService.group)
-    .subscribe(() => this.router.navigate(['/']));
+  leaveGroup() {
+    this.groupsService.leaveGroup(this.groupsService.group._id, this.userSessionService.user._id)
+    .subscribe(() => this.router.navigate(['/home']))
+    // this.groupsService.remove(this.groupsService.group)
+    // .subscribe(() => this.router.navigate(['/']));
   }
 
 }

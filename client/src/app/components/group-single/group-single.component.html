@@ -1,8 +1,8 @@
 <h1> Group details </h1>
 <a [routerLink]="['']"> Back to list </a>
-<a [routerLink]="['/inviteusers', group._id]"> Invite other users </a>
 
 <div *ngIf="group">
+  <a [routerLink]="['/inviteusers', group._id]"> Invite other users </a>
   <div class="group-info">
     <h2> {{ group.name }}</h2>
     <a [routerLink]="['/editgroup', group._id]" class="btn btn-primary">Edit Group</a>  

@@ -15,6 +15,7 @@ export class GarmentUploadComponent implements OnInit {
     size: '',
     brand: '',
     kind: '',
+    description: ''
   }
 
   constructor(

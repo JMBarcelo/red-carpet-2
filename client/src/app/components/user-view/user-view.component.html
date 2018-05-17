@@ -8,63 +8,96 @@
     <button (click)="logout()" type="submit" class="btn btn-primary btn-lg btn-block">Log Out</button>
 
   </div>
-  <div class="row meetings">
-    <a [routerLink]="['/addmeeting']" class="btn btn-primary">Program new Event</a>
-    <div *ngIf="meetings.length">
-      <div class="meeting" *ngFor="let meeting of meetings">
-        <a [routerLink]="['/meeting',meeting._id]">
-          <h3> {{ meeting.name }} </h3>
-        </a>
-        <p> {{ meeting.date | date:'dd-MM-yyyy'}} </p>
-        <p> {{ meeting.place }} </p>
+  <div *ngIf="advicegroups && meetings && groups && favslists && clothes">
+    <div class="row advicegroups">
+      <div *ngIf="advicegroups.length">
+        <div class="advicegroup" *ngFor="let advicegroup of advicegroups">
+
+          <h5>User {{advicegroup._sender.username}} invites you to join {{advicegroup._group.name}} group</h5>
+          <p> Message: {{advicegroup.message}} </p>
+
+          <button (click)="accept(advicegroup._group._id, advicegroup._receiver._id, advicegroup)" type="submit" class="btn btn-success btn-lg btn-block">Sure!</button>
+          <button (click)="decline(advicegroup)" type="submit" class="btn btn-danger btn-lg btn-block">No thanks</button>
+
+        </div>
+      </div>
+      <div *ngIf="!advicegroups.length">
+        <p>YOU HAVE NO ADVICES</p>
       </div>
     </div>
-    <div *ngIf="!meetings.length">
+
+    <!-- <div class="row advicegarments">
+    <div *ngIf="advicegarments.length">
+      <div class="advicegarment" *ngFor="let advicegarment of advicegarments">
+
+        <p>AQUI MENSAJES!!!!!</p>
+
+      </div>
+    </div>
+    <div *ngIf="!advicegarments.length">
       <p>YOU HAVE NO EVENTS PROGRAMED</p>
     </div>
-  </div>
+  </div> -->
 
-  <div class="row groups">
-    <a [routerLink]="['/addgroup']" class="btn btn-primary">Create new Group</a>
-    <div *ngIf="groups.length">
-      <div class="group" *ngFor="let group of groups">
-        <a [routerLink]="['/group',group._id]">
-          <h3> {{ group.name }} </h3>
-        </a>
+    <div class="row meetings">
+      <a [routerLink]="['/addmeeting']" class="btn btn-primary">Program new Event</a>
+      <div *ngIf="meetings.length">
+        <div class="meeting" *ngFor="let meeting of meetings">
+          <a [routerLink]="['/meeting',meeting._id]">
+            <h3> {{ meeting.name }} </h3>
+          </a>
+          <p> {{ meeting.date | date:'dd-MM-yyyy'}} </p>
+          <p> {{ meeting.place }} </p>
+        </div>
+      </div>
+      <div *ngIf="!meetings.length">
+        <p>YOU HAVE NO EVENTS PROGRAMED</p>
       </div>
     </div>
-    <div *ngIf="!groups.length">
-      <p>YOU HAVE NO GROUPS CREATED</p>
-    </div>
-  </div>
 
-  <div class="row favslists">
-    <a [routerLink]="['/addfavslist']" class="btn btn-primary">Create new Favourites List</a>
-    <div *ngIf="favslists.length">
-      <div class="favslist" *ngFor="let favslist of favslists">
-        <a  [routerLink]="['/favslist',favslist._id]">
-          <h3 [style.color]="favslist.color"> {{ favslist.title }} </h3>
-        </a>
+    <div class="row groups">
+      <a [routerLink]="['/addgroup']" class="btn btn-primary">Create new Group</a>
+      <div *ngIf="groups.length">
+        <div class="group" *ngFor="let group of groups">
+          <a [routerLink]="['/group',group._id]">
+            <h3> {{ group.name }} </h3>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="!groups.length">
+        <p>YOU HAVE NO GROUPS CREATED</p>
       </div>
     </div>
-    <div *ngIf="!favslists.length">
-      <p>YOU HAVE NO FAVOURITES LISTS CREATED</p>
-    </div>
-  </div>
 
-  <div class="row clothes">
-    <a [routerLink]="['/addgarment']" class="btn btn-primary">Upload new Garment</a>
-    <div *ngIf="clothes.length">
-      <div class="garment col-md-3" *ngFor="let garment of clothes">
-        <a [routerLink]="['/garment', garment._id]">
-          <h3> {{ garment.kind }} </h3>
-        </a>
-        <p> {{ garment.brand }} </p>
-        <p> {{ garment.size }} </p>
+    <div class="row favslists">
+      <a [routerLink]="['/addfavslist']" class="btn btn-primary">Create new Favourites List</a>
+      <div *ngIf="favslists.length">
+        <div class="favslist" *ngFor="let favslist of favslists">
+          <a [routerLink]="['/favslist',favslist._id]">
+            <h3 [style.color]="favslist.color"> {{ favslist.title }} </h3>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="!favslists.length">
+        <p>YOU HAVE NO FAVOURITES LISTS CREATED</p>
       </div>
     </div>
-    <div *ngIf="!clothes.length">
-      <p>YOU HAVE NO CLOTHES UPLOADED</p>
+
+    <div class="row clothes">
+      <a [routerLink]="['/addgarment']" class="btn btn-primary">Upload new Garment</a>
+      <div *ngIf="clothes.length">
+        <div class="garment col-md-3" *ngFor="let garment of clothes">
+          <a [routerLink]="['/garment', garment._id]">
+            <h3> {{ garment.kind }} </h3>
+          </a>
+          <p> {{ garment.brand }} </p>
+          <p> {{ garment.size }} </p>
+          <p> {{ garment.description }} </p>
+        </div>
+      </div>
+      <div *ngIf="!clothes.length">
+        <p>YOU HAVE NO CLOTHES UPLOADED</p>
+      </div>
     </div>
   </div>
 </div>

@@ -11,6 +11,7 @@ const garmentSchema = new Schema(
     size: String,
     brand: String,
     kind: String,
+    description: String,
     /*color*/
     dates: {
       type : Array,

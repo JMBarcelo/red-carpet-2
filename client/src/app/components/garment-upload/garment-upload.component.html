@@ -20,6 +20,10 @@
         <label for="kind">Kind: </label>
         <input type="text" [(ngModel)]="garmentInfo.kind" class="form-control" placeholder="Kind" name="kind">
       </div>
+      <div class="form-group">
+        <label for="description">Description: </label>
+        <input type="text" [(ngModel)]="garmentInfo.description" class="form-control" placeholder="Description" name="description">
+      </div>
       <button type="submit" (click)="newGarment()" class="btn btn-primary btn-lg btn-block">Upload Garment</button>
     </form>
   </div>

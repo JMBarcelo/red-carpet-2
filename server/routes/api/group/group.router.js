@@ -23,4 +23,16 @@ router.put("/garmentgroup/:id", (req, res, next) => {
     .catch(e => next(e));
 });
 
+router.put("/usergroup/:id", (req, res, next) => {
+  Group.findById(req.params.id).update({$push:{users:req.body.user}, obj:true})
+    .then(objects => res.json(objects))
+    .catch(e => next(e));
+});
+
+router.put("/leavegroup/:id", (req, res, next) => {
+  Group.findById(req.params.id).update({$pull:{users:req.body.user}, obj:true})
+    .then(objects => res.json(objects))
+    .catch(e => next(e));
+});
+
 module.exports = router;

@@ -64,4 +64,18 @@ export class GroupsService {
       .catch(error => Observable.throw(error.json().message));
   }
 
+  userGroup(groupID, userID) {
+    return this.http.put(`${this.BASE_URL}/api/groups/usergroup/${groupID}`, {user: userID}, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
+  leaveGroup(groupID, userID) {
+    return this.http.put(`${this.BASE_URL}/api/groups/leavegroup/${groupID}`, {user: userID}, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
 }

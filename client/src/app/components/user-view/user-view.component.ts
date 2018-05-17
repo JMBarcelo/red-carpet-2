@@ -5,6 +5,7 @@ import { ClothesService } from '../../services/clothes.service';
 import { GroupsService } from '../../services/groups.service';
 import { FavslistsService } from '../../services/favslists.service';
 import { MeetingsService } from '../../services/meetings.service';
+import { AdviceGroupService } from '../../services/advice-group.service';
 
 @Component({
   selector: 'app-user-view',
@@ -18,6 +19,7 @@ export class UserViewComponent implements OnInit {
   groups: any;
   favslists: any;
   meetings: any;
+  advicegroups:any;
 
   constructor(
     public userSessionService: UserSessionService,
@@ -26,6 +28,7 @@ export class UserViewComponent implements OnInit {
     public groupsService: GroupsService,
     public favsListsService: FavslistsService,
     public meetingsService: MeetingsService,
+    public adviceGroupService: AdviceGroupService,
   ) {}
 
   ngOnInit() {
@@ -35,12 +38,25 @@ export class UserViewComponent implements OnInit {
       this.groupsService.getList().subscribe(list => this.groups = list)
       this.favsListsService.getList().subscribe(list => this.favslists = list)
       this.meetingsService.getList().subscribe(list => this.meetings = list)
+      this.adviceGroupService.getList().subscribe(list => this.advicegroups = list)      
     });
   }
 
   logout() {
     this.userSessionService.logout()
     .subscribe(() => this.router.navigate(['/']));
+  }
+
+  accept(groupID, receiverID, advicegroup) {
+    this.groupsService.userGroup(groupID, receiverID)
+    .subscribe()
+    this.adviceGroupService.remove(advicegroup)
+      .subscribe(() => this.router.navigate(['/home']));
+  }
+
+  decline(advicegroup) {
+    this.adviceGroupService.remove(advicegroup)
+      .subscribe(() => this.router.navigate(['/home']));
   }
 
 }

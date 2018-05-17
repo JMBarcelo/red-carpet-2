@@ -34,7 +34,6 @@ const getUsers = (req, res, next) => {
   User.find({ _id: {$ne:req.user._id} } )
     .select('-password')
     .select('-email')
-    .select('-_id')
     .select('-updated_at')
     .select('-created_at')
     .select('-birthday')

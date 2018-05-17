@@ -3,5 +3,9 @@
 
 <div class="users" *ngFor="let user of users">
     <h3> {{ user.username }} </h3>
-    <button (click)="addUser(user._id)" class="btn btn-danger btn-lg btn-block">Add to Group</button>
+    <form>
+        <label for="text">Message: </label>
+        <input type="text" [(ngModel)]="adviceGroupInfo.message" class="form-control" placeholder="Message" name="text">
+    </form>
+    <button type="submit" (click)="sendInvitation(user._id)" class="btn btn-primary btn-lg btn-block">Invite to Group</button>
 </div>

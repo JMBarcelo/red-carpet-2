@@ -31,6 +31,7 @@ import { MeetingSingleComponent } from './components/meeting-single/meeting-sing
 import { MeetingsService } from './services/meetings.service';
 import { GarmentGroupComponent } from './components/garment-group/garment-group.component';
 import { UserInviteComponent } from './components/user-invite/user-invite.component';
+import { AdviceGroupService } from './services/advice-group.service';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { UserInviteComponent } from './components/user-invite/user-invite.compon
     MeetingsService,
     FavslistsService,
     GroupsService,
+    AdviceGroupService
   ],
   bootstrap: [AppComponent]
 })

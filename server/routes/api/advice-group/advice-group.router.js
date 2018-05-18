@@ -7,7 +7,7 @@ const router = crud(AdviceGroup);
 
 router.get("/", (req, res, next) => {
   AdviceGroup.find({'_receiver' : res.locals.user._id})
-    .populate('_receiver', 'username')
+    .populate('_receiver') 
     .populate('_sender', 'username')
     .populate('_group', 'name')
     .then(objects => res.json(objects))

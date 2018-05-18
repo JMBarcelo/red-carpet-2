@@ -7,7 +7,10 @@ const garmentSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User"
     },
-    /*photo*/
+    photo: {
+      type: String,
+      default: 'https://gloimg.gamcdn.com/G/pdm-product-pic/Clothing/2016/10/26/source-img/20161026155657_37147.jpg'
+    },
     size: String,
     brand: String,
     kind: String,

@@ -6,6 +6,7 @@ import { GroupsService } from '../../services/groups.service';
 import { FavslistsService } from '../../services/favslists.service';
 import { MeetingsService } from '../../services/meetings.service';
 import { AdviceGroupService } from '../../services/advice-group.service';
+import { AdviceGarmentService } from '../../services/advice-garment.service';
 
 @Component({
   selector: 'app-user-view',
@@ -20,6 +21,7 @@ export class UserViewComponent implements OnInit {
   favslists: any;
   meetings: any;
   advicegroups:any;
+  advicegarments: any;
 
   constructor(
     public userSessionService: UserSessionService,
@@ -29,6 +31,7 @@ export class UserViewComponent implements OnInit {
     public favsListsService: FavslistsService,
     public meetingsService: MeetingsService,
     public adviceGroupService: AdviceGroupService,
+    public adviceGarmentService: AdviceGarmentService
   ) {}
 
   ngOnInit() {
@@ -39,6 +42,7 @@ export class UserViewComponent implements OnInit {
       this.favsListsService.getList().subscribe(list => this.favslists = list)
       this.meetingsService.getList().subscribe(list => this.meetings = list)
       this.adviceGroupService.getList().subscribe(list => this.advicegroups = list)      
+      this.adviceGarmentService.getList().subscribe(list => this.advicegarments = list)      
     });
   }
 
@@ -56,6 +60,18 @@ export class UserViewComponent implements OnInit {
 
   decline(advicegroup) {
     this.adviceGroupService.remove(advicegroup)
+      .subscribe(() => this.router.navigate(['/home']));
+  }
+
+  acceptBorrow(garmentID, receiverID, advicegarments, daysbefore, daysafter, datemeeting) {
+    this.clothesService.userGarment(garmentID, receiverID, daysbefore, daysafter, datemeeting)
+    .subscribe()
+    this.adviceGarmentService.remove(advicegarments)
+      .subscribe(() => this.router.navigate(['/home']));
+  }
+
+  declineBorrow(advicegarments) {
+    this.adviceGarmentService.remove(advicegarments)
       .subscribe(() => this.router.navigate(['/home']));
   }
 

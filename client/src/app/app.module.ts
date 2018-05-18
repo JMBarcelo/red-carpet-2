@@ -33,6 +33,9 @@ import { GarmentGroupComponent } from './components/garment-group/garment-group.
 import { UserInviteComponent } from './components/user-invite/user-invite.component';
 import { AdviceGroupService } from './services/advice-group.service';
 import { GarmentFavslistComponent } from './components/garment-favslist/garment-favslist.component';
+import { GarmentMeetingComponent } from './components/garment-meeting/garment-meeting.component';
+import { GarmentBorrowComponent } from './components/garment-borrow/garment-borrow.component';
+import { AdviceGarmentService } from './services/advice-garment.service';
 
 
 @NgModule({
@@ -56,7 +59,9 @@ import { GarmentFavslistComponent } from './components/garment-favslist/garment-
     MeetingEditComponent,
     MeetingSingleComponent,
     UserInviteComponent,
-    GarmentFavslistComponent
+    GarmentFavslistComponent,
+    GarmentMeetingComponent,
+    GarmentBorrowComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,8 @@ import { GarmentFavslistComponent } from './components/garment-favslist/garment-
     MeetingsService,
     FavslistsService,
     GroupsService,
-    AdviceGroupService
+    AdviceGroupService,
+    AdviceGarmentService
   ],
   bootstrap: [AppComponent]
 })

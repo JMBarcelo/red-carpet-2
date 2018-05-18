@@ -11,4 +11,14 @@ router.get("/", (req, res, next) => {
     .catch(e => next(e));
 });
 
+router.put("/usergarment/:id", (req, res, next) => {
+  Garment.findById(req.params.id).update({
+    $set: {borrower:req.body.user},
+    $addToSet: {dates: req.body.dm},
+    obj:true
+  })
+    .then(objects => res.json(objects))
+    .catch(e => next(e));
+});
+
 module.exports = router;

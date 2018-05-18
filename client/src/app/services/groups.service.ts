@@ -29,6 +29,13 @@ export class GroupsService {
       .catch(error => Observable.throw(error.json().message));
   }
 
+  getUserList() {
+    return this.http.get(`${this.BASE_URL}/api/groups`, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGroup(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
   get(group) {
     return this.http.get(`${this.BASE_URL}/api/groups/${group.id}`, this.options)
       .map((res) => res.json())

@@ -4,11 +4,12 @@
   <div class="row">
 
     <h2>Welcome {{userSessionService.user.username}}</h2>
+    <img [src]="userSessionService.user.image" alt="User image">
     <a [routerLink]="['/edituser']" class="btn btn-primary">Edit profile</a>
     <button (click)="logout()" type="submit" class="btn btn-primary btn-lg">Log Out</button>
 
   </div>
-  <div *ngIf="advicegroups && meetings && groups && favslists && clothes">
+  <div *ngIf="advicegroups && advicegarments && meetings && groups && favslists && clothes">
     <div class="row advicegroups">
       <div *ngIf="advicegroups.length">
         <div class="advicegroup" *ngFor="let advicegroup of advicegroups">
@@ -16,8 +17,8 @@
           <h5>User {{advicegroup._sender.username}} invites you to join {{advicegroup._group.name}} group</h5>
           <p> Message: {{advicegroup.message}} </p>
 
-          <button (click)="accept(advicegroup._group._id, advicegroup._receiver._id, advicegroup)" type="submit" class="btn btn-success btn-lg btn-block">Sure!</button>
-          <button (click)="decline(advicegroup)" type="submit" class="btn btn-danger btn-lg btn-block">No thanks</button>
+          <button (click)="accept(advicegroup._group._id, advicegroup._receiver._id, advicegroup)" type="submit" class="btn btn-success btn-lg">Sure!</button>
+          <button (click)="decline(advicegroup)" type="submit" class="btn btn-danger btn-lg">No thanks</button>
 
         </div>
       </div>
@@ -26,18 +27,25 @@
       </div>
     </div>
 
-    <!-- <div class="row advicegarments">
-    <div *ngIf="advicegarments.length">
-      <div class="advicegarment" *ngFor="let advicegarment of advicegarments">
+    <div class="row advicegarments">
+      <div *ngIf="advicegarments.length">
+        <div class="advicegarment" *ngFor="let advicegarment of advicegarments">
 
-        <p>AQUI MENSAJES!!!!!</p>
+          <h5>User {{advicegarment._sender.username}} wants to borrow yor {{advicegarment._garment.size}} size {{advicegarment._garment.brand}} {{advicegarment._garment.kind}}</h5>
+          <h5>Day: {{advicegarment.datemeeting}}</h5>
+          <p>Pick up: {{advicegarment.daysbefore}}</p>
+          <p>Give back: {{advicegarment.daysafter}}</p>
+          <p> Message: {{advicegarment.message}} </p>
 
+          <button (click)="acceptBorrow(advicegarment._garment._id, advicegarment._receiver._id, advicegarment, advicegarment.daysbefore, advicegarment.daysafter, advicegarment.datemeeting)" type="submit" class="btn btn-success btn-lg">Sure!</button>
+          <button (click)="declineBorrow(advicegarment)" type="submit" class="btn btn-danger btn-lg">No thanks</button>
+
+        </div>
+      </div>
+      <div *ngIf="!advicegarments.length">
+        <p>YOU HAVE NO EVENTS PROGRAMED</p>
       </div>
     </div>
-    <div *ngIf="!advicegarments.length">
-      <p>YOU HAVE NO EVENTS PROGRAMED</p>
-    </div>
-  </div> -->
 
     <div class="row meetings">
       <a [routerLink]="['/addmeeting']" class="btn btn-primary">Program new Event</a>

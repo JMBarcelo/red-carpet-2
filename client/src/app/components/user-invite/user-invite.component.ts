@@ -35,7 +35,6 @@ export class UserInviteComponent implements OnInit {
       this.groupsService.get(params)
       .subscribe( group => this.group = group );
     })
-    
     this.userSessionService.isLoggedIn().subscribe( u => {
       this.user = u
       this.userSessionService.getUsers().subscribe(list => this.users = list)

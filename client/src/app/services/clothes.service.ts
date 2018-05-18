@@ -29,6 +29,13 @@ export class ClothesService {
       .catch(error => Observable.throw(error.json().message));
   }
 
+  getID(garment) {
+    return this.http.get(`${this.BASE_URL}/api/clothes/${garment}`, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGarment(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
   edit(garment) {
     return this.http.put(`${this.BASE_URL}/api/clothes/${garment._id}`, garment, this.options)
       .map((res) => res.json())
@@ -45,6 +52,13 @@ export class ClothesService {
 
   newGarment(garment) {
     return this.http.post(`${this.BASE_URL}/api/clothes`, garment, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleGarment(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
+  userGarment(garmentID, userID, daysbefore, daysafter, datemeeting) {
+    return this.http.put(`${this.BASE_URL}/api/clothes/usergarment/${garmentID}`, {user: userID, db: daysbefore, da: daysafter, dm: datemeeting}, this.options)
       .map((res) => res.json())
       .map(user => this.handleGarment(user))
       .catch(error => Observable.throw(error.json().message));

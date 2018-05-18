@@ -23,6 +23,7 @@ const simpleCrud = Model => {
   // RETRIVE
   router.get("/:id", (req, res, next) => {
     Model.findById(req.params.id)
+      .populate('_user')
       .then(object =>res.json(object))
       .catch(e => next(e));
   });

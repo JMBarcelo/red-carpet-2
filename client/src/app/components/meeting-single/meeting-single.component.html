@@ -3,9 +3,10 @@
 
 <div *ngIf="meeting">
   <div class="meeting-info">
+    <a [routerLink]="['/garmentmeeting', meeting._id]" class="btn btn-primary">Add Garment</a>
+    <a [routerLink]="['/editmeeting', meeting._id]" class="btn btn-primary">Edit Event</a>    
     <h2> {{ meeting.name }}</h2>
     <h3> {{ meeting.place }}</h3>
     <p> {{ meeting.date | date:'dd-MM-yyyy'}}</p>
-    <a [routerLink]="['/editmeeting', meeting._id]" class="btn btn-primary">Edit Event</a>  
   </div>
 </div>

@@ -1,0 +1,21 @@
+<a [routerLink]="['']"> Back to list </a>
+<div class="row clothes" *ngIf="groups">
+  <div *ngIf="groups.length">
+    <div *ngFor="let group of groups">
+      <div *ngIf="group.clothes.length">
+        <div class="garment col-md-3" *ngFor="let garment of group.clothes">
+          <div *ngIf="!garment.dates.includes(date)">
+            <h3> {{ garment.kind }} </h3>
+            <p> {{ garment.brand }} </p>
+            <p> {{ garment.size }} </p>
+            <p> {{ garment.description }} </p>
+            <a [routerLink]="['/borrowgarment', garment._id, meeting._id]" class="btn btn-primary">Borrow Garment</a>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!group.clothes.length">
+        <p>YOU HAVE NO CLOTHES UPLOADED</p>
+      </div>
+    </div>
+  </div>
+</div>

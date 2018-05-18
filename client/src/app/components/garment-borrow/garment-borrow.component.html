@@ -1,0 +1,15 @@
+<h1>Users</h1>
+<a [routerLink]="['/home']" class="btn btn-primary">Back Home</a>
+
+<div *ngIf='owner'>
+  <h3> {{ owner.username }} </h3>
+  <form>
+    <label for="text">Message: </label>
+    <input type="text" [(ngModel)]="adviceGarmentInfo.message" class="form-control" placeholder="Message" name="text">
+    <label for="daysbefore">Days Before: </label>
+    <input type="number" [(ngModel)]="adviceGarmentInfo.daysbefore" class="form-control" placeholder="Number of Days Before" name="daysbefore">
+    <label for="daysafter">Days After: </label>
+    <input type="number" [(ngModel)]="adviceGarmentInfo.daysafter" class="form-control" placeholder="Number of Days After" name="daysafter">
+  </form>
+  <button type="submit" (click)="sendBorrow(user._id)" class="btn btn-primary btn-lg">Borrow Garment</button>
+</div>

@@ -18,6 +18,8 @@ import { MeetingEditComponent } from './components/meeting-edit/meeting-edit.com
 import { GarmentGroupComponent } from './components/garment-group/garment-group.component';
 import { UserInviteComponent } from './components/user-invite/user-invite.component';
 import { GarmentFavslistComponent } from './components/garment-favslist/garment-favslist.component';
+import { GarmentMeetingComponent } from './components/garment-meeting/garment-meeting.component';
+import { GarmentBorrowComponent } from './components/garment-borrow/garment-borrow.component';
 
 export const routes: Routes = [
    { path: '', component: UserViewComponent},
@@ -40,5 +42,7 @@ export const routes: Routes = [
    { path: 'meeting/:id', component: MeetingSingleComponent},
    { path: 'editmeeting/:id', component: MeetingEditComponent}, 
    { path: 'inviteusers/:id', component: UserInviteComponent}, 
+   { path: 'garmentmeeting/:id', component: GarmentMeetingComponent},
+   { path: 'borrowgarment/:id/:id2', component: GarmentBorrowComponent},
    { path: '**', redirectTo: ''}
 ];

@@ -29,6 +29,13 @@ export class MeetingsService {
       .catch(error => Observable.throw(error.json().message));
   }
 
+  getID(meeting) {
+    return this.http.get(`${this.BASE_URL}/api/meetings/${meeting}`, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleMeeting(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
   edit(meeting) {
     return this.http.put(`${this.BASE_URL}/api/meetings/${meeting._id}`, meeting, this.options)
       .map((res) => res.json())

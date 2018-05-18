@@ -3,10 +3,13 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
+import { environment }  from '../../environments/environment';
 import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable()
 export class UserSessionService {
+  
+  BASE_URL: string = environment.BASE_URL;
   user: any;
   options: any = { withCredentials: true };
 
@@ -21,7 +24,7 @@ export class UserSessionService {
 
   getUsers() {
     return this.http
-      .get(`http://localhost:3000/api/user`, this.options)
+      .get(`${this.BASE_URL}/api/user`, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
       .catch(error => Observable.throw(error.json().message));
@@ -29,7 +32,7 @@ export class UserSessionService {
 
   getThisUser(user) {
     return this.http
-      .post(`http://localhost:3000/api/user/session`, user, this.options)
+      .post(`${this.BASE_URL}/api/user/session`, user, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
       .catch(error => Observable.throw(error.json().message));
@@ -37,7 +40,7 @@ export class UserSessionService {
 
   isLoggedIn() {
     return this.http
-      .get(`http://localhost:3000/api/user/session`, this.options)
+      .get(`${this.BASE_URL}/api/user/session`, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
       .catch(error => Observable.throw(error.json().message));
@@ -45,7 +48,7 @@ export class UserSessionService {
 
   signup(user) {
     return this.http
-      .post(`http://localhost:3000/api/user/signup`, user, this.options)
+      .post(`${this.BASE_URL}/api/user/signup`, user, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
       .catch(error => Observable.throw(error.json().message));
@@ -53,7 +56,7 @@ export class UserSessionService {
 
   login(user) {
     return this.http
-      .post(`http://localhost:3000/api/user/login`, user, this.options)
+      .post(`${this.BASE_URL}/api/user/login`, user, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
       .catch(error => Observable.throw(error.json().message));
@@ -61,7 +64,7 @@ export class UserSessionService {
 
   update(user) {
     return this.http
-      .put(`http://localhost:3000/api/user/update/${user._id}`, user, this.options)
+      .put(`${this.BASE_URL}/api/user/update/${user._id}`, user, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
       .catch(error => Observable.throw(error.json().message));
@@ -69,7 +72,7 @@ export class UserSessionService {
 
   erase(user) {
     return this.http
-      .delete(`http://localhost:3000/api/user`, this.options)
+      .delete(`${this.BASE_URL}/api/user`, this.options)
       .map(res => res.json())
       .map(user => this.handleUser(user))
       .catch(error => Observable.throw(error.json().message));
@@ -77,7 +80,7 @@ export class UserSessionService {
 
   logout() {
     return this.http
-      .get(`http://localhost:3000/api/user/logout`, this.options)
+      .get(`${this.BASE_URL}/api/user/logout`, this.options)
       .map(res => res.json())
       .map(() => this.handleUser())
       .catch(error => Observable.throw(error.json().message));

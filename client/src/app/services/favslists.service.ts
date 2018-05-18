@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { environment }  from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class FavslistsService {
 
   favslist: any;
-  BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = environment.BASE_URL;
   options: any = { withCredentials: true };
   constructor(private http: Http) {}
 

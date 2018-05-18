@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { environment }  from '../../environments/environment';
 
 @Injectable()
 export class ClothesService {
 
   garment: any;
-  BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = environment.BASE_URL;
   options: any = { withCredentials: true };
   constructor(private http: Http) {}
 

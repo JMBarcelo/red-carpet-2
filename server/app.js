@@ -119,4 +119,8 @@ app.use((err, req, res, next) => {
   }
 });
 
+app.use((err, req, res, next) =>
+  req.sendFile(__dirname+'./public/index.html')
+)
+
 module.exports = app;

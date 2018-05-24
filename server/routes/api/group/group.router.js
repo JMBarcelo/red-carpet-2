@@ -8,12 +8,7 @@ const router = crud(Group);
 router.get("/", (req, res, next) => {
   Group.find({'users' : res.locals.user._id})
     .populate('users')
-    .populate('username.users')
     .populate('clothes')
-    .populate('kind.clothes')
-    .populate('size.clothes')
-    .populate('brand.clothes')
-    .populate('date.clothes')
     .then(objects => res.json(objects))
     .catch(e => next(e));
 });

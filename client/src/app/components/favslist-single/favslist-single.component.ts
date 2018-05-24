@@ -22,10 +22,10 @@ export class FavslistSingleComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe( params => {
-      this.favslistsService.get(params)
+      this.favslistsService.getGarment(params)
       .subscribe( favslist => {
         this.favslist = favslist;
-        this.clothes = this.favslist.clothes;
+        this.clothes = favslist.clothes;
       });
     })
   }

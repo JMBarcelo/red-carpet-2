@@ -9,11 +9,6 @@
       <div class="group" *ngFor="let group of groups">
         <h3> {{ group.name }} </h3>
         <button (click)="garmentGroup(group._id)" class="btn btn-danger btn-lg">Add Garment</button>
-        <!-- <form>
-          <label for="check"><h3> {{ group.name }} </h3></label>
-          <input type="checkbox" checklist-model="group.garment" checklist-value="garment.id" name="check">
-        </form>
-        <button (click)="garmentGroup()" type="submit" class="btn btn-danger btn-lg btn-block">Add/Remove Garment</button> -->
       </div>
     </div>
     <div *ngIf="!groups.length">

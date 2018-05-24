@@ -22,6 +22,7 @@ export class UserViewComponent implements OnInit {
   meetings: any;
   advicegroups:any;
   advicegarments: any;
+  meetingID: any;
 
   constructor(
     public userSessionService: UserSessionService,
@@ -42,7 +43,7 @@ export class UserViewComponent implements OnInit {
       this.favsListsService.getList().subscribe(list => this.favslists = list)
       this.meetingsService.getList().subscribe(list => this.meetings = list)
       this.adviceGroupService.getList().subscribe(list => this.advicegroups = list)      
-      this.adviceGarmentService.getList().subscribe(list => this.advicegarments = list)      
+      this.adviceGarmentService.getList().subscribe(list => this.advicegarments = list)  
     });
   }
 
@@ -63,8 +64,10 @@ export class UserViewComponent implements OnInit {
       .subscribe(() => this.router.navigate(['/home']));
   }
 
-  acceptBorrow(garmentID, receiverID, advicegarments, daysbefore, daysafter, datemeeting) {
+  acceptBorrow(garmentID, receiverID, meetingID, advicegarments, daysbefore, daysafter, datemeeting) {
     this.clothesService.userGarment(garmentID, receiverID, daysbefore, daysafter, datemeeting)
+    .subscribe()
+    this.meetingsService.meetingGarment(meetingID, garmentID)
     .subscribe()
     this.adviceGarmentService.remove(advicegarments)
       .subscribe(() => this.router.navigate(['/home']));

@@ -22,6 +22,7 @@ export class GarmentBorrowComponent implements OnInit {
     _sender: '',
     _receiver: '',
     _garment: '',
+    _meeting: '',
     datemeeting: '',
     daysbefore: 0,
     daysafter: 0,
@@ -55,10 +56,11 @@ export class GarmentBorrowComponent implements OnInit {
     });
   }
 
-  sendBorrow(receiverID) {
+  sendBorrow() {
     this.adviceGarmentInfo._sender = this.userSessionService.user._id
-    this.adviceGarmentInfo._receiver = receiverID;
+    this.adviceGarmentInfo._receiver = this.garment._user;
     this.adviceGarmentInfo._garment = this.garment._id;
+    this.adviceGarmentInfo._meeting = this.meeting._id;
     this.adviceGarmentInfo.datemeeting = this.datemeeting;
     this.adviceGarmentService.newAdviceGarment(this.adviceGarmentInfo)
     .subscribe(() => {

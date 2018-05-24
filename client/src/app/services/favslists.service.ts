@@ -24,7 +24,7 @@ export class FavslistsService {
   }
 
   getGarment(favslist) {
-    return this.http.get(`${this.BASE_URL}/api/favslists/garment/${favslist._id}`, this.options)
+    return this.http.get(`${this.BASE_URL}/api/favslists/garment/${favslist.id}`, this.options)
       .map((res) => res.json())
       .map(user => this.handleFavslist(user))
       .catch(error => Observable.throw(error.json().message));

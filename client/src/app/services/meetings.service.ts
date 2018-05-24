@@ -58,4 +58,11 @@ export class MeetingsService {
       .catch(error => Observable.throw(error.json().message));
   }
 
+  meetingGarment(meetingID, garmentID) {
+    return this.http.put(`${this.BASE_URL}/api/meetings/addgarment/${meetingID}`, {garmentID}, this.options)
+      .map((res) => res.json())
+      .map(user => this.handleMeeting(user))
+      .catch(error => Observable.throw(error.json().message));
+  }
+
 }

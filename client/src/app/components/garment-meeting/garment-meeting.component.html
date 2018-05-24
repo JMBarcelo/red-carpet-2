@@ -5,6 +5,7 @@
       <div *ngIf="group.clothes.length">
         <div class="garment col-md-3" *ngFor="let garment of group.clothes">
           <div *ngIf="!garment.dates.includes(date)">
+            <img [src]="garment.photo" alt="Garment image">                            
             <h3> {{ garment.kind }} </h3>
             <p> {{ garment.brand }} </p>
             <p> {{ garment.size }} </p>

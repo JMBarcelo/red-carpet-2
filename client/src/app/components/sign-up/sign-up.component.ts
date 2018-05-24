@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
     email: '',
     birthday: '',
     city: '',
+    image: ''
   };
 
   constructor(public userSessionService: UserSessionService, public router: Router) {}

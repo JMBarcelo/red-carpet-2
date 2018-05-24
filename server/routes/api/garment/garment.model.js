@@ -9,7 +9,7 @@ const garmentSchema = new Schema(
     },
     photo: {
       type: String,
-      default: 'https://gloimg.gamcdn.com/G/pdm-product-pic/Clothing/2016/10/26/source-img/20161026155657_37147.jpg'
+      default: 'http://memorabledecor.com/wp-content/uploads/2016/01/california-closets-Closet-Contemporary-with-island-ceiling-lighting-22.jpg'
     },
     size: String,
     brand: String,

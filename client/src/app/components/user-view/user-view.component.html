@@ -10,6 +10,7 @@
 
   </div>
   <div *ngIf="advicegroups && advicegarments && meetings && groups && favslists && clothes">
+
     <div class="row advicegroups">
       <div *ngIf="advicegroups.length">
         <div class="advicegroup" *ngFor="let advicegroup of advicegroups">
@@ -23,7 +24,7 @@
         </div>
       </div>
       <div *ngIf="!advicegroups.length">
-        <p>YOU HAVE NO ADVICES</p>
+        <p>YOU HAVE ANY GROUP TO JOIN</p>
       </div>
     </div>
 
@@ -31,19 +32,21 @@
       <div *ngIf="advicegarments.length">
         <div class="advicegarment" *ngFor="let advicegarment of advicegarments">
 
-          <h5>User {{advicegarment._sender.username}} wants to borrow yor {{advicegarment._garment.size}} size {{advicegarment._garment.brand}} {{advicegarment._garment.kind}}</h5>
-          <h5>Day: {{advicegarment.datemeeting}}</h5>
+          <h5>User {{advicegarment._sender.username}} wants to borrow yor {{advicegarment._garment.size}} size {{advicegarment._garment.brand}}
+            {{advicegarment._garment.kind}}</h5>
+          <h5>Day: {{advicegarment.datemeeting | date: 'dd-MM-yyyy'}}</h5>
           <p>Pick up: {{advicegarment.daysbefore}}</p>
           <p>Give back: {{advicegarment.daysafter}}</p>
           <p> Message: {{advicegarment.message}} </p>
 
-          <button (click)="acceptBorrow(advicegarment._garment._id, advicegarment._receiver._id, advicegarment, advicegarment.daysbefore, advicegarment.daysafter, advicegarment.datemeeting)" type="submit" class="btn btn-success btn-lg">Sure!</button>
+          <button (click)="acceptBorrow(advicegarment._garment._id, advicegarment._receiver._id, advicegarment._meeting._id, advicegarment, advicegarment.daysbefore, advicegarment.daysafter, advicegarment.datemeeting)"
+            type="submit" class="btn btn-success btn-lg">Sure!</button>
           <button (click)="declineBorrow(advicegarment)" type="submit" class="btn btn-danger btn-lg">No thanks</button>
 
         </div>
       </div>
       <div *ngIf="!advicegarments.length">
-        <p>YOU HAVE NO EVENTS PROGRAMED</p>
+        <p>YOU HAVE ANY GARMENT LOAN REQUEST</p>
       </div>
     </div>
 
@@ -56,6 +59,9 @@
           </a>
           <p> {{ meeting.date | date:'dd-MM-yyyy'}} </p>
           <p> {{ meeting.place }} </p>
+          <div class="eventclothes" *ngFor="let eventgarment of meeting.clothes">
+            <img class="img-mini" [src]="eventgarment.photo" alt="Garment image">
+          </div>
         </div>
       </div>
       <div *ngIf="!meetings.length">
@@ -103,6 +109,7 @@
       <a [routerLink]="['/addgarment']" class="btn btn-primary">Upload new Garment</a>
       <div *ngIf="clothes.length">
         <div class="garment col-md-3" *ngFor="let garment of clothes">
+          <img [src]="garment.photo" alt="Garment image">
           <a [routerLink]="['/garment', garment._id]">
             <h3> {{ garment.kind }} </h3>
           </a>

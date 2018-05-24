@@ -15,6 +15,10 @@ const adviceGarmentSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Garment"
     },
+    _meeting: {
+      type: Schema.Types.ObjectId,
+      ref: "Meeting"
+    },
     datemeeting: Date,
     daysbefore: Number,
     daysafter: Number,
